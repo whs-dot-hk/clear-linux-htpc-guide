@@ -22,12 +22,12 @@ sudo systemctl add-wants update-triggers.target fix-nvidia-libGL-trigger.service
 
 # Disable nouveau
 sudo mkdir /etc/modprobe.d
-printf "blacklist nouveau \noptions nouveau modeset=0 \n" | sudo tee --append /etc/modprobe.d/disable-nouveau.conf
+printf "blacklist nouveau \noptions nouveau modeset=0 \n" | sudo tee /etc/modprobe.d/disable-nouveau.conf
 
 # Configure dynamic linker
-echo "include /etc/ld.so.conf.d/*.conf" |  sudo tee --append /etc/ld.so.conf
+echo "include /etc/ld.so.conf.d/*.conf" |  sudo tee /etc/ld.so.conf
 sudo mkdir /etc/ld.so.conf.d
-printf "/opt/nvidia/lib \n/opt/nvidia/lib32 \n" | sudo tee --append /etc/ld.so.conf.d/nvidia.conf
+printf "/opt/nvidia/lib \n/opt/nvidia/lib32 \n" | sudo tee /etc/ld.so.conf.d/nvidia.conf
 sudo ldconfig
 
 # Configure Xorg
