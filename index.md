@@ -56,6 +56,7 @@ curl -O https://download.nvidia.com/XFree86/Linux-x86_64/455.28/NVIDIA-Linux-x86
 
 Reboot
 ```sh
+# Nvidia Driver install cmd
 sudo sh NVIDIA-Linux-x86_64-455.28.run \
 --utility-prefix=/opt/nvidia \
 --opengl-prefix=/opt/nvidia \
