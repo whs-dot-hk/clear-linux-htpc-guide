@@ -14,7 +14,7 @@ Type=oneshot
 ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib/libGL.so.1 /usr/lib/libGL.so.1
 ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib32/libGL.so.1 /usr/lib32/libGL.so.1
 EOF
-# End of first cmd
+# End of first cmd, don't copy this line
 
 # Copy the remaining cmds
 sudo systemctl daemon-reload
