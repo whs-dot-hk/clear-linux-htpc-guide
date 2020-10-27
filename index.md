@@ -15,17 +15,21 @@ ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib/libGL.so.1 /usr/lib/libGL.so.1
 ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib32/libGL.so.1 /usr/lib32/libGL.so.1
 EOF
 # End of first cmd
+
 # Copy the remaining cmds
 sudo systemctl daemon-reload
 sudo systemctl add-wants update-triggers.target fix-nvidia-libGL-trigger.service
+
 # Disable nouveau
 sudo mkdir /etc/modprobe.d
 printf "blacklist nouveau \noptions nouveau modeset=0 \n" | sudo tee --append /etc/modprobe.d/disable-nouveau.conf
+
 # Configure dynamic linker
 echo "include /etc/ld.so.conf.d/*.conf" |  sudo tee --append /etc/ld.so.conf
 sudo mkdir /etc/ld.so.conf.d
 printf "/opt/nvidia/lib \n/opt/nvidia/lib32 \n" | sudo tee --append /etc/ld.so.conf.d/nvidia.conf
 sudo ldconfig
+
 # Configure Xorg
 sudo mkdir -p /etc/X11/xorg.conf.d
 sudo tee /etc/X11/xorg.conf.d/nvidia-files-opt.conf > /dev/null <<'EOF'
