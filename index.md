@@ -49,6 +49,7 @@ curl -O https://download.nvidia.com/XFree86/Linux-x86_64/455.28/NVIDIA-Linux-x86
 
 ### Install Nvidia Driver
 > Save the install cmd below to a text file before reboot
+
 Reboot
 ```sh
 sudo sh NVIDIA-Linux-x86_64-455.28.run \
